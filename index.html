@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala do Empreendedor - Quatro Barras</title>
+    
+    <!-- Configurações para funcionar como App (PWA) -->
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Empreendedor QB">
+    
+    <!-- Tailwind CSS (CDN para renderização rápida) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Ajuste fino para sensação de App Nativo */
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between max-w-md mx-auto shadow-2xl border-x border-slate-200">
+
+    <!-- Cabeçalho do App -->
+    <header class="bg-slate-900 text-white p-5 rounded-b-2xl shadow-md sticky top-0 z-40">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-sky-500 p-2.5 rounded-xl text-white shadow-inner">
+                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Sala do Empreendedor</h1>
+                    <p class="text-xs text-sky-400 font-medium">Quatro Barras • PR</p>
+                </div>
+            </div>
+            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                Online
+            </span>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal / Botões de Ação -->
+    <main class="p-4 flex-1 space-y-4">
+        
+        <!-- Banner de Boas-Vindas -->
+        <div class="bg-gradient-to-r from-sky-600 to-blue-700 rounded-2xl p-4 text-white shadow-lg relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="font-bold text-base mb-1">Serviços Rápidos para o MEI</h2>
+                <p class="text-xs text-sky-100 mb-3">Abra sua empresa, emita guias ou tire dúvidas sem filas.</p>
+                <button onclick="abrirChatWhatsApp()" 
+                        class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold py-2 px-3.5 rounded-xl shadow transition-all active:scale-95">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    Falar no WhatsApp
+                </button>
+            </div>
+            <i data-lucide="briefcase" class="absolute -right-3 -bottom-3 w-24 h-24 text-white/10"></i>
+        </div>
+
+        <!-- Grade de Serviços (Grid) -->
+        <div class="grid grid-cols-2 gap-3">
+            
+            <!-- Botão 1: Guia DAS -->
+            <a href="https://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao" 
+               target="_blank"
+               class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between active:scale-95">
+                <div class="bg-amber-100 text-amber-700 w-10 h-10 rounded-xl flex items-center justify-center mb-3">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-slate-900">Emitir DAS</h3>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Boleto mensal MEI</p>
+                </div>
+            </a>
+
+            <!-- Botão 2: Abrir MEI -->
+            <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" 
+               target="_blank"
+               class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between active:scale-95">
+                <div class="bg-sky-100 text-sky-700 w-10 h-10 rounded-xl flex items-center justify-center mb-3">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-slate-900">Abrir MEI</h3>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Formalização grátis</p>
+                </div>
+            </a>
+
+            <!-- Botão 3: Declaração Anual -->
+            <a href="https://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/dasnsimei.app/Identificacao" 
+               target="_blank"
+               class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between active:scale-95">
+                <div class="bg-purple-100 text-purple-700 w-10 h-10 rounded-xl flex items-center justify-center mb-3">
+                    <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-slate-900">Declaração DASN</h3>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Relatório anual</p>
+                </div>
+            </a>
+
+            <!-- Botão 4: Agendamento Presencial -->
+            <button onclick="abrirChatWhatsApp('Gostaria de agendar um horário presencial na Sala do Empreendedor.')" 
+                    class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between text-left active:scale-95">
+                <div class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center mb-3">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-slate-900">Agendamento</h3>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Atendimento na Sala</p>
+                </div>
+            </button>
+
+        </div>
+
+        <!-- Banner Cursos e Capacitações -->
+        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between cursor-pointer"
+             onclick="abrirChatWhatsApp('Gostaria de saber mais sobre os cursos e capacitações do Sebrae disponíveis.')">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-50 text-indigo-600 p-2.5 rounded-xl">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900">Cursos & Sebrae</h4>
+                    <p class="text-xs text-slate-500">Capacitações gratuitas</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </div>
+
+        <!-- Alerta de Prazos -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-amber-800">
+            <i data-lucide="bell" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+                <strong class="font-semibold">Lembrete Fiscal:</strong> O DAS vence todo dia 20. Mantenha seu benefício previdenciário ativo!
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-white border-t border-slate-200 p-3 text-center text-xs text-slate-500 space-y-2">
+        <p class="font-medium text-slate-600">Prefeitura Municipal de Quatro Barras • PR</p>
+        <p class="text-[10px] text-slate-400">Desenvolvimento Local & Empreendedorismo</p>
+    </footer>
+
+    <!-- Widget Flutuante do Chat do WhatsApp -->
+    <div id="whatsapp-chat-widget" class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+        <div id="chat-popup" class="hidden mb-3 bg-white p-3.5 rounded-2xl shadow-xl border border-slate-200 text-xs max-w-[220px] transition-all">
+            <p class="font-bold text-slate-900 mb-1">Sala do Empreendedor</p>
+            <p class="text-slate-600">Olá! Precisa de ajuda com o seu MEI em Quatro Barras?</p>
+        </div>
+
+        <button onclick="abrirChatWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center">
+            <i data-lucide="message-circle" class="w-7 h-7"></i>
+        </button>
+    </div>
+
+    <!-- Scripts de Funcionalidade -->
+    <script>
+        // Inicializa os ícones da biblioteca Lucide
+        lucide.createIcons();
+
+        // Configuração do WhatsApp da Sala do Empreendedor
+        const NUMERO_WHATSAPP = "5541999999999"; // Substitua pelo número oficial com DDD
+
+        function abrirChatWhatsApp(mensagemPersonalizada) {
+            const mensagem = mensagemPersonalizada 
+                ? encodeURIComponent(mensagemPersonalizada)
+                : encodeURIComponent("Olá! Estou no aplicativo da Sala do Empreendedor e gostaria de tirar uma dúvida.");
+            
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`;
+            window.open(url, '_blank');
+        }
+
+        // Exibe o balão de ajuda após 3 segundos
+        setTimeout(() => {
+            const popup = document.getElementById('chat-popup');
+            if (popup) {
+                popup.classList.remove('hidden');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
